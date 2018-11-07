@@ -234,53 +234,68 @@
 <html>
     <head>
         <title>Sports Cards</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="css/styles.css" type="text/css" />
+        
     </head>
     <body>
+        
+        <style>
+            @font-face{
+                font-family: sportsNight;
+                src: url(OldSportsFont.ttf);
+            }
+        </style>
+        
         <main>
             <a href="scart.php" id="cartButton">Cart</a> <br>
-            <div id="cartPreview">
-            <ul>
+            <div id="cartPreview" style='float:none; '>
+            <ul class="list-unstyled">
                 <?php
                     for ($i = 0; $i < 3; $i++) {
                         if (isset($_SESSION["scart"][$i])) {
                             if ($i == 0) {
-                                echo "Cart Preview<br>";
+                                echo "<strong style='color:navy;'>Cart Preview</strong><br>";
                             }
-                            echo "<li>".$_SESSION["scart"][$i]["name"]." | $".$_SESSION["scart"][$i]["price"]."</li>";
+                            echo "<li style='color:mediumblue;'>".$_SESSION["scart"][$i]["name"]." | $".$_SESSION["scart"][$i]["price"]."</li>";
                         }
                     }
                 ?>
-            </ul>
+            
                 <?php
                     if (count($_SESSION["scart"]) > 3) {
-                        echo "<h4>Click cart for more</h4>";
+                         echo "<li style='color:purple;'><h5>Click CART Above For Complete List of Cards</h5></li>";
                     }
                 ?>
+                </ul>
             </div>
             
             <form>
-                Player Name: <input type="text" name="playerName" value="<?=$_GET['playerName']?>"><br>
-                Sport: 
+                <p><h4>Player Name:</h4> <input type="text" name="playerName" value="<?=$_GET['playerName']?>"><br></p>
+                <!--Sort By Position:<input type="text" name="playerPos" value="<?=$_GET['playerPos']?>"><br><br>-->
+                <h4>Sport:</h4>
                 <select name="catId">
                     <option value="">- None -</option>
                     <?= displayCategories() ?>
-                </select> <br>
-                Price: From <input type="number" name="priceFrom" value="<?=$_GET['priceFrom']?>">
-                To <input type="number" name="priceTo" value="<?=$_GET['priceTo']?>"><br>
-                Order Results By: 
-                <input type="radio" id="teamOrd" name="orderBy" value="playerTeam" <?=checkRadio("playerTeam")?>>
+                </select> <br><br>
+                <h4>Order Results By:</h4>
+                <input type="radio" id="teamOrd" name="orderBy" value="playerTeam" <?=checkRadio("playerTeam")?>style="border: 0px; width:20px; height: 20px;">
                 <label for="teamOrd">Player Team</label>
-                <input type="radio" id="nameOrd" name="orderBy" value="playerName" <?=checkRadio("playerName")?>>
+                <input type="radio" id="nameOrd" name="orderBy" value="playerName" <?=checkRadio("playerName")?> style="border: 0px; width:20px; height: 20px;">
                 <label for="nameOrd">Player Name</label><br>
-                Sort Results By:
-                <input type="radio" id="asc" name="sortBy" value="ASC" <?=checkSortRadio("ASC")?>>
+                <h4>Sort Results By:</h4>
+                <input type="radio" id="asc" name="sortBy" value="ASC" <?=checkSortRadio("ASC")?> style="border: 0px; width:20px; height: 20px;">
                 <label for="asc">ASC</label>
-                <input type="radio" id="desc" name="sortBy" value="DESC" <?=checkSortRadio("DESC")?>>
+                <input type="radio" id="desc" name="sortBy" value="DESC" <?=checkSortRadio("DESC")?> style="border: 0px; width:20px; height: 20px;">
                 <label for="desc">DESC</label><br>
+                
+                
+            
                 <label for="team">Display player's team name</label>
-                <input type="checkbox" id="team" name="team" <?=checkCheckBox()?>><br><br>
-                <input type="submit" name="submit" value="Submit">
+                <input type="checkbox" id="team" name="team" <?=checkCheckBox()?> style="border: 0px; width:20px; height: 20px;"><br>
+                <!--<input type="submit" name="submit" value="Submit">-->
+                <input type='hidden' name='submit' value="Submit">
+                <button class='btn btn-primary' type="submit" style="color:black;">Submit</button>
             </form><br>
             <?php
                 if (isset($_GET["submit"])) {

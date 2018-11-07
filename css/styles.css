@@ -1,15 +1,16 @@
 body {
     margin-top: 25px;
     text-align: center;
-    background-image: url("../img/sport-background.jpg");
+    background: linear-gradient(#424949BA, #424949CA), url("../img/sport-background.jpg");
+    font-family: sportsNight;
 }
 
 main {
     background-color: rgba(255,255,255,0.6);
     padding-top: 25px;
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
-    font-size: 1.25em;
+    font-size: 1.15em;
 }
 
 .main2 {
@@ -32,7 +33,7 @@ main {
 }
 
 #playersTable {
-    font-size: 1.25em;
+    font-size: 1.0em;
 }
 
 #cartButton {
@@ -45,7 +46,7 @@ main {
 }
 
 ul li {
-    list-style-type: square;
+    list-style-type: none;
 }
 
 form {
