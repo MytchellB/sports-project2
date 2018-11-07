@@ -13,12 +13,13 @@
                 // Player image, name, and price go inside the td
                 echo "<td><img src='".$info["image"]."'>";
                 echo $info["name"]." $";
+                echo $info["playerTeam"];
                 echo $info["price"]."</td>";
                 echo "<td></td>";
                 if ($i % 5 == 0) {
                     echo "</tr>";
                 }
-                // echo $i;
+               
                 $i++;
             }
         }
